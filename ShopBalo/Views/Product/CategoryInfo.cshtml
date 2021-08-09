@@ -1,0 +1,40 @@
+﻿@model List<Model.EF.Product>
+@{
+    var category = (Model.EF.Category)ViewBag.Category;
+    ViewBag.Title = "List Product";
+    Layout = "~/Views/Shared/_LayoutCL.cshtml";
+}
+
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>Categories</h3>
+        </div>
+        <div class="see">
+            <p><a href="/Product">See all Products</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        @foreach (var item in Model)
+        {
+            var link = "/Product/Detail/" + item.Name + "-" + item.Id;
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="@link"><img src="~/assets/client/images/products/@item.Image_Link" alt="" /></a>
+                <h2>@item.Name</h2>
+                <span>@item.Name</span>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")</span></p>
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="/AddToCart?productId=@item.Id&quantity=1">Thêm vào giỏ</a></h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        }
+        <!--Phan Trang-->
+    </div>
+</div>
+

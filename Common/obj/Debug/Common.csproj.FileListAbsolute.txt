@@ -1,0 +1,6 @@
+C:\Users\Son\Desktop\C#\MVC\ShopBalo\Common\bin\Debug\Common.dll
+C:\Users\Son\Desktop\C#\MVC\ShopBalo\Common\bin\Debug\Common.pdb
+C:\Users\Son\Desktop\C#\MVC\ShopBalo\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Son\Desktop\C#\MVC\ShopBalo\Common\obj\Debug\Common.dll
+C:\Users\Son\Desktop\C#\MVC\ShopBalo\Common\obj\Debug\Common.pdb
+C:\Users\Son\Desktop\C#\MVC\ShopBalo\Common\obj\Debug\Common.csprojAssemblyReference.cache

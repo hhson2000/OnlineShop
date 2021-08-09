@@ -1,0 +1,91 @@
+﻿@model Model.EF.Contact
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutCL.cshtml";
+}
+
+<style>
+    #mapCanvas {
+        height: 600px;
+    }
+</style>
+<!--const uluru = { lat: 21.013430, lng: 105.526732 };-->
+@section jsFooter{
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="/assets/client/js/controller/contactController.js"></script>
+    <script>
+
+        function initMap() {
+            const uluru = { lat: 21.013430, lng: 105.526732 };
+            const map = new google.maps.Map(document.getElementById("mapCanvas"), {
+                zoom: 17,
+                center: uluru,
+            });
+            const contentString = 'HomeShpEE';
+              
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            });
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map,
+                title: "Shop",
+            });
+            marker.addListener("click", () => {
+                infowindow.open({
+                    anchor: marker,
+                    map,
+                    shouldFocus: false,
+                });
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+
+
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <h2>Thông tin liên hệ</h2>
+                @Html.Raw(Model?.Content)
+                HomePEE chuyên cung cấp Balo<br />
+                mẫu mã đẹp giá cả phải chăng<br />
+                Địa chỉ: Room A114R - KTX Đại học FPT Hà Nội<bt />
+                <br />
+                <h2>Gửi thông tin</h2>
+                <form>
+                    <div class="form-group">
+                        <label>Họ tên</label>
+                        <input type="text" id="txtName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Điện thoại</label>
+                        <input type="text" id="txtMobile" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input type="text" id="txtAddress" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" id="txtEmail" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Yêu cầu</label>
+                        <textarea id="txtContent" class="form-control">
+
+                        </textarea>
+                    </div>
+                    <button id="btnSend" class="btn btn-success">Gửi đi</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Bản đồ</h2>
+                <div class="map" id="mapCanvas"></div>
+            </div>
+        </div>
+    </div>
+</div>
